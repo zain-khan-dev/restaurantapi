@@ -158,3 +158,32 @@ Updates the inventory with the arguments specified in the body for the given obj
 Deletes the inventory item with the given ObjectID
 
 
+
+
+
+## Example API Calls
+
+The following API Calls are made using [httpie](https://httpie.io/) 
+
+
+### posting an order item
+
+```http post http://localhost:5000/order menu_items="<object_id1>,<object_id2>,<object_id3>" table_id=111```
+
+### getting a single order item
+
+```http get http://localhost:5000/order/<object_id>"```
+
+### deleting a single order item
+
+```http delete http://localhost:5000/order/<object_id>"```
+
+
+### updating a single order item
+
+```http put http://localhost:5000/order/<object_id> table_id=10"```
+
+
+### getting all the orders
+
+```http put http://localhost:5000/order"```
