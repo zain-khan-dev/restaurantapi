@@ -18,11 +18,15 @@ class Order(Resource):
         data = request.get_json()
         menu_items = [ObjectId(id) for id in data["menu_items"].split(",")]
         table_id = data["table_ids"]
-        print(menu_items)
-        print(list(menu_table.find({})))
         order_items = list(menu_table.find({"_id":{"$in":menu_items}}))
-        print(order_items)
         order_id = order_table.insert_one({"menu_items":order_items,"table_id":table_id})
         return {'created order'}
+
+
+    def delete(self):
+        data = request.get_json()
+        id = data["id"]
+        order_table.delete_one({"_id":ObjectId(id)})
+        return Response({"deleted succsfully"}, status=200)
 
     
